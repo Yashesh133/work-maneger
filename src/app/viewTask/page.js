@@ -1,5 +1,5 @@
 import React from "react";
-import ViewTask from "./viewTask";
+import ViewTask from "./ViewTask"
 
 export const metadata = {
   title: "View Task : Work Manager",
