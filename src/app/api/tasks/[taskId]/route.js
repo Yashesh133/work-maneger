@@ -41,7 +41,6 @@ export async function PUT(request, { params }) {
     const updatedTask = await task.save();
     return NextResponse.json(updatedTask);
   } catch (error) {
-    console.log(error);
     return getResponseMessage("Error in update Task ", false, 404);
   }
 }

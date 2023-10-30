@@ -1,10 +1,12 @@
-import { Typography } from "@mui/material";
 import React from "react";
+import ViewTask from "./viewTask";
+
 export const metadata = {
-  title: "Show Task : Work Manager",
-};
-const ViewTask = () => {
-  return <Typography variant="h3">ViewTask</Typography>;
+  title: "View Task : Work Manager",
 };
 
-export default ViewTask;
+const viewTask = () => {
+  return <ViewTask />
+};
+
+export default viewTask;

@@ -8,7 +8,6 @@ export async function GET(request) {
   try {
     tasks = await Task.find();
   } catch (error) {
-    console.log(error);
     return getResponseMessage("error in getting data", false, 404);
   }
   return NextResponse.json(tasks);

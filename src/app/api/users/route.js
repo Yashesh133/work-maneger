@@ -2,6 +2,8 @@ import { connectDb } from "@/helper/db";
 import { User } from "@/model/users";
 import { NextResponse } from "next/server";
 
+const bcrypt = require('bcrypt');
+
 connectDb();
 
 export async function GET() {
@@ -26,10 +28,9 @@ export async function GET() {
   try {
     users = await User.find();
   } catch (err) {
-    console.log("Couldn't find", err);
     return NextResponse.json({
-      message: "Couldn't find"
-    })
+      message: "Couldn't find",
+    });
   }
 
   return NextResponse.json(users);
@@ -49,6 +50,8 @@ export async function POST(request) {
   });
 
   try {
+    user.password = await bcrypt.hashSync(user.password, 10);
+
     const createdUser = await user.save();
 
     const response = NextResponse.json(user, {
@@ -57,7 +60,6 @@ export async function POST(request) {
 
     return response;
   } catch (err) {
-    console.log("Error", err);
     return NextResponse.json({
       Message: "failed to create user",
     });
